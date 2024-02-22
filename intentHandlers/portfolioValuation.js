@@ -6,12 +6,11 @@ const {
   USER_OPERATION,
   createPayload,
 } = require('../utils/helper');
-const {
-  getUserPortfolioData,
-} = require('../db/dbHandler/getPortfolioValuation');
+const { GetInvestmentList } = require('../db/dbHandler/getPortfolioValuation');
 const {
   isInMutualFundSelectionProcess,
 } = require('../utils/mutualFundSelectionHelper');
+const { generatePortfolioList } = require('../utils/portfolioHelper');
 
 function handlePortfolioValuationIntent(agent) {
   console.log('handlePortfolioValuationIntent');
@@ -28,31 +27,16 @@ function handlePortfolioValuationIntent(agent) {
     agent.add('Please provie phone number to proceed further');
   }
 
-  let portfolioData = getUserPortfolioData(userPhoneNumber);
+  let allInvestment = GetInvestmentList(userPhoneNumber);
 
-  if (!portfolioData) {
+  if (!allInvestment) {
     handleEmptyPortfolio(agent, userPhoneNumber);
     return;
   }
-
   // when user have portofilio under thier account.
-  const { name, portfolio, phone_number } = portfolioData;
+  const { name, portfolio, phone_number } = allInvestment;
   message = `Hello ${name}\nBelow is list of your investment linked to account ${phone_number}\n\n`;
-  let buttons = {
-    inline_keyboard: [],
-  };
-  portfolio.map((eachPortfolio) => {
-    buttons.inline_keyboard.push([
-      {
-        text: eachPortfolio.portfolio_id,
-        callback_data: eachPortfolio.portfolio_id,
-      },
-    ]);
-  });
-  const payload = createPayload(Payload, agent, {
-    text: message,
-    reply_markup: buttons,
-  });
+  let payload = generatePortfolioList(agent, portfolio, message);
   agent.add(payload);
   return;
 }
