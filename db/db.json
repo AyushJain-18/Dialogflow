@@ -1,0 +1,740 @@
+{
+    "CATEGORY": [
+        "Equity_Funds_Details",
+        "Debt_Funds_Details",
+        "Hybrid_Funds_Details",
+        "Solution_Oriented_Schemes_Details"
+    ],
+    "Equity_Funds_Details": {
+        "Large cap funds": "These schemes are required to make a minimum investment of 80% of the total assets in the equity and equity related instruments of large cap companies.",
+        "Mid cap funds": "65% of the total assets should be invested in the equity and equity related instruments of mid cap companies for this scheme.",
+        "Large and mid cap funds": "The schemes need to make a minimum investment of at least 35% of total assets in both large cap and mid cap companies each.",
+        "Small cap funds": "The investment required by the scheme in equity and equity-related instrument of small cap companies is 65% of the total assets.",
+        "Multi cap funds": "These schemes invests at least 65% of the total assets in in equity and equity-related instruments.",
+        "ELSS": "An open-ended equity linked saving scheme has a compulsory holding period of 3 years but provides tax benefit to the investor. The scheme is required to make a minimum investment of at least 80% of the total assets in equity and equity-related instruments."
+    },
+    "Debt_Funds_Details": {
+        "Corporate Bond Fund": "These schemes invest at least 80% of total assets in only high rated corporate bonds.",
+        "Government Bond Fund": "These schemes invest at least 80% of total assets in only high rated Government bonds.",
+        "Overnight Fund": "As the name suggests, these schemes invest in securities with a maturity of 1 day.",
+        "Liquid fund": "Liquid fund schemes invest in debt and money markets with a maximum maturity of up to 91 days only.",
+        "Ultra Short Duration Fund": "These schemes predominantly invest in debt and money market instruments with a Macaulay duration period of 3 to 6 months."
+    },
+    "Solution_Oriented_Schemes_Details": {
+        "Retirement Fund": "The retirement fund scheme has a lock in period of 5 years or the retirement age whichever is earlier.",
+        "Children's Fund": " This solution-oriented scheme has a lock in for at least 5 years or till the child turns major whichever is earlier.",
+        "Index Funds/ ETF": "These schemes replicate a particular index by investing at least 95% of the total assets in the securities of the index being replicated.",
+        "FoFs (Overseas/ Domestic)": "he FoF schemes have a minimum investment requirement of 95% of the total assets in the underlying fund."
+    },
+    "Hybrid_Funds_Details": {
+        "Arbitrage Fund": "As the name suggests, these schemes follow an arbitrage strategy and are required to invest 65% of the total assets in equity & equity-related instruments.",
+        "Conservative Hybrid Fund": "The fund is required to make investments in both equity and debt instruments. The investment requirement for equity & equity-related instruments is between 10% to 25% of the total assets and that for debt instruments it is 75% to 90% of the total assets.",
+        "Balanced Hybrid Fund": "The minimum investment requirement for this fund scheme is 40% to 60% of the total assets for both equity as well as debt instruments. Arbitrage is not allowed in this scheme.",
+        "Aggressive Hybrid Fund": "These funds invest in both equity & equity-related and debt instruments with a minimum requirement of 65-80% for the former and 25-30% for the latter."
+    },
+    "Equity_Funds": [
+        "Large cap funds",
+        "Mid cap funds",
+        "Large and mid cap funds",
+        "Small cap funds",
+        "Multi cap funds",
+        "ELSS"
+    ],
+    "Debt_Funds": [
+        "Corporate Bond Fund",
+        "Government Bond Fund",
+        "Overnight Fund",
+        "Liquid fund",
+        "Ultra Short Duration Fund"
+    ],
+    "Solution_Oriented_Schemes": [
+        "Retirement Fund",
+        "Children's Fund",
+        "Index Funds/ ETF",
+        "FoFs (Overseas/ Domestic)"
+    ],
+    "Hybrid_Funds": [
+        "Arbitrage Fund",
+        "Conservative Hybrid Fund",
+        "Balanced Hybrid Fund",
+        "Aggressive Hybrid Fund"
+    ],
+    "portfolio_details": {
+        "+919876543210": {
+            "name": "John Joe",
+            "phone_number": "+919876543210",
+            "portfolio": [
+                {
+                    "fund_category": "Equity_Funds",
+                    "fund_name": "Large cap funds",
+                    "current_value": 100000,
+                    "investment_amount": 75000,
+                    "portfolio_id": "ABC123-1",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 25000
+                            },
+                            {
+                                "date": "2023-07-20",
+                                "transaction_type": "Redemption",
+                                "amount": -10000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-10-05",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2022-12-30",
+                                "transaction_type": "Dividend",
+                                "amount": 1500
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Debt_Funds",
+                    "fund_name": "Corporate Bond Fund",
+                    "current_value": 80000,
+                    "investment_amount": 70000,
+                    "portfolio_id": "ABC123-2",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-05-10",
+                                "transaction_type": "Investment",
+                                "amount": 30000
+                            },
+                            {
+                                "date": "2023-08-15",
+                                "transaction_type": "Redemption",
+                                "amount": -10000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-11-20",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2023-01-10",
+                                "transaction_type": "Dividend",
+                                "amount": 2000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Hybrid_Funds",
+                    "fund_name": "Retirement Fund",
+                    "current_value": 120000,
+                    "investment_amount": 100000,
+                    "portfolio_id": "ABC123-3",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-03-05",
+                                "transaction_type": "Investment",
+                                "amount": 40000
+                            },
+                            {
+                                "date": "2023-09-20",
+                                "transaction_type": "Redemption",
+                                "amount": -15000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-12-15",
+                                "transaction_type": "Investment",
+                                "amount": 70000
+                            },
+                            {
+                                "date": "2023-02-25",
+                                "transaction_type": "Dividend",
+                                "amount": 2500
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "+918447960828": {
+            "name": "Andy",
+            "phone_number": "+918447960828",
+            "portfolio": [
+                {
+                    "fund_category": "Equity_Funds",
+                    "fund_name": "Large cap funds",
+                    "current_value": 150000,
+                    "investment_amount": 100000,
+                    "portfolio_id": "MNO786-1",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2023-07-20",
+                                "transaction_type": "Redemption",
+                                "amount": -20000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-10-05",
+                                "transaction_type": "Investment",
+                                "amount": 100000
+                            },
+                            {
+                                "date": "2022-12-30",
+                                "transaction_type": "Dividend",
+                                "amount": 3000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Debt_Funds",
+                    "fund_name": "Government Bond Fund",
+                    "current_value": 90000,
+                    "investment_amount": 80000,
+                    "portfolio_id": "MNO786-2",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-05-10",
+                                "transaction_type": "Investment",
+                                "amount": 40000
+                            },
+                            {
+                                "date": "2023-08-15",
+                                "transaction_type": "Redemption",
+                                "amount": -15000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-11-20",
+                                "transaction_type": "Investment",
+                                "amount": 80000
+                            },
+                            {
+                                "date": "2023-01-10",
+                                "transaction_type": "Dividend",
+                                "amount": 3500
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Hybrid_Funds",
+                    "fund_name": "Children's Fund",
+                    "current_value": 110000,
+                    "investment_amount": 90000,
+                    "portfolio_id": "MNO786-3",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-03-05",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2023-09-20",
+                                "transaction_type": "Redemption",
+                                "amount": -20000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-12-15",
+                                "transaction_type": "Investment",
+                                "amount": 90000
+                            },
+                            {
+                                "date": "2023-02-25",
+                                "transaction_type": "Dividend",
+                                "amount": 4000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Solution_Oriented_Schemes",
+                    "fund_name": "Retirement Fund",
+                    "current_value": 140000,
+                    "investment_amount": 120000,
+                    "portfolio_id": "MNO786-4",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-03-05",
+                                "transaction_type": "Investment",
+                                "amount": 60000
+                            },
+                            {
+                                "date": "2023-09-20",
+                                "transaction_type": "Redemption",
+                                "amount": -25000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-12-15",
+                                "transaction_type": "Investment",
+                                "amount": 120000
+                            },
+                            {
+                                "date": "2023-02-25",
+                                "transaction_type": "Dividend",
+                                "amount": 5000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Hybrid_Funds",
+                    "fund_name": "Index Funds/ ETF",
+                    "current_value": 100000,
+                    "investment_amount": 80000,
+                    "portfolio_id": "MNO786-5",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-03-05",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2023-09-20",
+                                "transaction_type": "Redemption",
+                                "amount": -20000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-12-15",
+                                "transaction_type": "Investment",
+                                "amount": 80000
+                            },
+                            {
+                                "date": "2023-02-25",
+                                "transaction_type": "Dividend",
+                                "amount": 3500
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "+919876543215": {
+            "name": "Cody",
+            "phone_number": "+919876543215",
+            "portfolio": [
+                {
+                    "fund_category": "Equity_Funds",
+                    "fund_name": "Large cap funds",
+                    "current_value": 15000000,
+                    "investment_amount": 15000000,
+                    "portfolio_id": "GYH925-1",
+                    "transaction_history": {
+                        "2021-2022": [
+                            {
+                                "date": "2021-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2021-07-20",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2021-10-01",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2021-12-30",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2021-12-31",
+                                "transaction_type": "Redemption",
+                                "amount": -200000
+                            },
+                            {
+                                "date": "2021-12-31",
+                                "transaction_type": "Dividend",
+                                "amount": 2500
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2022-07-20",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2022-10-01",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2022-12-30",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2022-12-31",
+                                "transaction_type": "Redemption",
+                                "amount": -200000
+                            },
+                            {
+                                "date": "2022-12-31",
+                                "transaction_type": "Dividend",
+                                "amount": 2500
+                            }
+                        ],
+                        "2023-2024": [
+                            {
+                                "date": "2023-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2023-07-20",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2023-10-01",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2023-12-30",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2023-12-31",
+                                "transaction_type": "Redemption",
+                                "amount": -200000
+                            },
+                            {
+                                "date": "2023-12-31",
+                                "transaction_type": "Dividend",
+                                "amount": 2500
+                            }
+                        ],
+                        "2024-2025": [
+                            {
+                                "date": "2024-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2024-07-20",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2024-10-01",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2024-12-30",
+                                "transaction_type": "Investment",
+                                "amount": 1500000
+                            },
+                            {
+                                "date": "2024-12-31",
+                                "transaction_type": "Redemption",
+                                "amount": -200000
+                            },
+                            {
+                                "date": "2024-12-31",
+                                "transaction_type": "Dividend",
+                                "amount": 2500
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "+919876543212": {
+            "name": "Tim",
+            "phone_number": "+919876543212",
+            "portfolio": [
+                {
+                    "fund_category": "Equity_Funds",
+                    "fund_name": "Large cap funds",
+                    "current_value": 100000,
+                    "investment_amount": 75000,
+                    "portfolio_id": "UHJ546-1",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-04-15",
+                                "transaction_type": "Investment",
+                                "amount": 25000
+                            },
+                            {
+                                "date": "2023-07-20",
+                                "transaction_type": "Redemption",
+                                "amount": -10000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-10-05",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2022-12-30",
+                                "transaction_type": "Dividend",
+                                "amount": 1500
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Debt_Funds",
+                    "fund_name": "Corporate Bond Fund",
+                    "portfolio_id": "UHJ546-2",
+                    "current_value": 80000,
+                    "investment_amount": 70000,
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-05-10",
+                                "transaction_type": "Investment",
+                                "amount": 30000
+                            },
+                            {
+                                "date": "2023-08-15",
+                                "transaction_type": "Redemption",
+                                "amount": -10000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-11-20",
+                                "transaction_type": "Investment",
+                                "amount": 50000
+                            },
+                            {
+                                "date": "2023-01-10",
+                                "transaction_type": "Dividend",
+                                "amount": 2000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Hybrid_Funds",
+                    "fund_name": "Retirement Fund",
+                    "current_value": 120000,
+                    "investment_amount": 100000,
+                    "portfolio_id": "UHJ546-3",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-03-05",
+                                "transaction_type": "Investment",
+                                "amount": 40000
+                            },
+                            {
+                                "date": "2023-09-20",
+                                "transaction_type": "Redemption",
+                                "amount": -15000
+                            }
+                        ],
+                        "2022-2023": [
+                            {
+                                "date": "2022-12-15",
+                                "transaction_type": "Investment",
+                                "amount": 70000
+                            },
+                            {
+                                "date": "2023-02-25",
+                                "transaction_type": "Dividend",
+                                "amount": 2500
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "+919876543213": {
+            "name": "Ricky",
+            "phone_number": "+919876543213",
+            "portfolio": [
+                {
+                    "fund_category": "Equity_Funds",
+                    "fund_name": "Small cap funds",
+                    "current_value": 40000,
+                    "investment_amount": 35000,
+                    "portfolio_id": "HNM654-1",
+                    "transaction_history": [
+                        {
+                            "date": "2023-02-28",
+                            "transaction_type": "Purchase",
+                            "amount": 35000
+                        }
+                    ]
+                },
+                {
+                    "fund_category": "Debt_Funds",
+                    "fund_name": "Ultra Short Duration Fund",
+                    "current_value": 50000,
+                    "investment_amount": 45000,
+                    "portfolio_id": "HNM654-2",
+                    "transaction_history": [
+                        {
+                            "date": "2023-05-20",
+                            "transaction_type": "Purchase",
+                            "amount": 45000
+                        },
+                        {
+                            "date": "2023-11-10",
+                            "transaction_type": "Dividend",
+                            "amount": 2000
+                        }
+                    ]
+                },
+                {
+                    "fund_category": "Solution_Oriented_Schemes",
+                    "fund_name": "Children's Fund",
+                    "current_value": 72000,
+                    "investment_amount": 68000,
+                    "portfolio_id": "HNM654-3",
+                    "transaction_history": [
+                        {
+                            "date": "2023-07-12",
+                            "transaction_type": "Purchase",
+                            "amount": 68000
+                        },
+                        {
+                            "date": "2023-12-28",
+                            "transaction_type": "Dividend",
+                            "amount": 4000
+                        }
+                    ]
+                },
+                {
+                    "fund_category": "Hybrid_Funds",
+                    "fund_name": "Balanced Hybrid",
+                    "current_value": 90000,
+                    "investment_amount": 85000,
+                    "portfolio_id": "HNM654-4",
+                    "transaction_history": [
+                        {
+                            "date": "2023-09-01",
+                            "transaction_type": "Purchase",
+                            "amount": 85000
+                        }
+                    ]
+                }
+            ]
+        },
+        "+919876543214": {
+            "name": "Robin",
+            "phone_number": "+919876543214",
+            "portfolio": [
+                {
+                    "fund_category": "Equity_Funds",
+                    "fund_name": "Small cap funds",
+                    "current_value": 40000,
+                    "investment_amount": 35000,
+                    "portfolio_id": "GFD951-1",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-02-28",
+                                "transaction_type": "Purchase",
+                                "amount": 35000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Debt_Funds",
+                    "fund_name": "Ultra Short Duration Fund",
+                    "current_value": 50000,
+                    "investment_amount": 45000,
+                    "portfolio_id": "GFD951-2",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-05-20",
+                                "transaction_type": "Purchase",
+                                "amount": 45000
+                            },
+                            {
+                                "date": "2023-11-10",
+                                "transaction_type": "Dividend",
+                                "amount": 2000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Solution_Oriented_Schemes",
+                    "fund_name": "Children's Fund",
+                    "current_value": 72000,
+                    "investment_amount": 68000,
+                    "portfolio_id": "GFD951-3",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-07-12",
+                                "transaction_type": "Purchase",
+                                "amount": 68000
+                            },
+                            {
+                                "date": "2023-12-28",
+                                "transaction_type": "Dividend",
+                                "amount": 4000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fund_category": "Hybrid_Funds",
+                    "fund_name": "Balanced Hybrid",
+                    "current_value": 90000,
+                    "investment_amount": 85000,
+                    "portfolio_id": "GFD951-4",
+                    "transaction_history": {
+                        "2023-2024": [
+                            {
+                                "date": "2023-09-01",
+                                "transaction_type": "Purchase",
+                                "amount": 85000
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
