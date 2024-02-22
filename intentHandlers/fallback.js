@@ -10,7 +10,7 @@ function handleFallbackIntent(agent) {
   let message = isInMutualFundSelectionProcess(agent);
   message =
     message ||
-    'We did not get this.\n To begin please type Start \n To explore various mutuals fund, please type Explore';
+    'We did not get this.\nTo begin please type Start. \nTo explore various mutuals fund, please type Explore';
   agent.add(message);
 }
 

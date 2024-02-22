@@ -3,11 +3,21 @@ const {
   createPayload,
   deleteSelectedCategoryContext,
 } = require('../utils/helper');
+const { isInPhoneNumberCollectionProcess } = require('../utils/phoneUtils');
+const {
+  isInMutualFundSelectionProcess,
+} = require('../utils/mutualFundSelectionHelper');
 
 function handleWelcomeIntent(agent) {
   console.log('handleWelcomeIntent');
+  isInPhoneNumberCollectionProcess(agent);
+  let text = isInMutualFundSelectionProcess(agent);
+  if (text) {
+    agent.add(text);
+    return;
+  }
   deleteSelectedCategoryContext(agent);
-  let text =
+  text =
     'Welcome to ABC Mutual Fund Service. Please select any one option to begin with';
   const buttons = {
     inline_keyboard: [

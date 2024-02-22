@@ -89,8 +89,8 @@ function handlePhoneNumberIntent(agent) {
   // phone numebr not present or invalid phone number
   if (!phoneNumber || !validatePhoneNumber(phoneNumber)) {
     let returnMsg = phoneNumber
-      ? `Please provide a valid phone number\nPlease try again as ${phoneNumber} is incorect.`
-      : 'Please provide a valid phone number to proceed';
+      ? `Please provide a valid phone number\nPlease try again as ${phoneNumber} is incorect.\n\nOr type exit to skip`
+      : 'Please provide a valid phone number to proceed\n\nOr type exit to skip';
     agent.add(returnMsg);
     return;
   }
