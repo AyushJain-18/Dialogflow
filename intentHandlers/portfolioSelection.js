@@ -1,26 +1,20 @@
-const {
-  getPortfolioData,
-  GetInvestmentList,
-} = require('../db/dbHandler/getPortfolioValuation');
-const { getPhoneNumber } = require('../utils/helper');
-const { generatePortfolioList } = require('../utils/portfolioHelper');
+const { getPortfolioData } = require('../db/dbHandler/getPortfolioValuation');
+const { getPhoneNumberContext, getPhoneNumber } = require('../utils/helper');
+const { onWrongPortfolioSelection } = require('../utils/portfolioHelper');
 
 function handlePortfolioSelectionIntent(agent) {
   console.log('handlePortfolioSelectionIntent');
   let phoneNumber = getPhoneNumber(agent);
   let message = '';
-  if (!phoneNumber) {
-    messgae = 'Session ended\nPlease Provide your phone number to login again';
+  if (phoneNumber) {
+    message = 'Session ended\nPlease Provide your phone number to login again';
     agent.add(message);
     return;
   }
   let userSelectedNumber = agent.parameters.portfolionumber;
   let portfolioData = getPortfolioData(phoneNumber, userSelectedNumber);
-  let { portfolio } = GetInvestmentList(phoneNumber);
   if (!portfolioData) {
-    message = `${userSelectedNumber} is not a valid portfolio number\n\n`;
-    message += 'Please select from below list';
-    let payload = generatePortfolioList(agent, portfolio, message);
+    let payload = onWrongPortfolioSelection(agent);
     agent.add(payload);
     return;
   }
@@ -36,7 +30,10 @@ function handlePortfolioSelectionIntent(agent) {
     currentDate.getMonth() + 1
   }-${currentDate.getFullYear()}`;
 
-  message = `Your Portfolio No. "${portfolio_id}" on "${date}" is \n\n Fund Category  ${fund_category}\n Fund Name  ${fund_name}\n Investmented amount  ${investment_amount}\n Current Value  ${current_value}\n`;
+  message = `Investment detail for ${portfolio_id} as of ${date} is \n\n Fund Category  ${fund_category.replaceAll(
+    '_',
+    ' '
+  )}\n Fund Name  ${fund_name}\n Investmented amount  ${investment_amount}\n Current Value  ${current_value}\n`;
 
   agent.add(message);
 }

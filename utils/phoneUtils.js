@@ -3,7 +3,9 @@ const {
   getPhoneNumber,
   getUserOperation,
   USER_OPERATION,
+  USER_CONTEXT,
 } = require('./helper');
+const { onWrongPortfolioSelection } = require('./portfolioHelper');
 
 const isPhoneNumberExist = (agent) => {
   const phoneNumber = getPhoneNumber(agent);
@@ -29,9 +31,19 @@ function formatPhoneNumber(phoneNumber) {
 
 function isInPhoneNumberCollectionProcess(agent) {
   let data = getUserOperation(agent);
-  if (data) {
+  let phone = isPhoneNumberExist(agent);
+  if (!data) return null;
+
+  if (!phone) {
     callProvideNumFollowUpEvent(agent);
     agent.add('Redirect to add phone number');
+    return;
+  }
+
+  if (data === USER_OPERATION.PORTFOLIO_VALUATION)
+    return onWrongPortfolioSelection(agent);
+  if (data === USER_OPERATION.TRANSACTION_HISTORY) {
+    // todo
   }
 }
 

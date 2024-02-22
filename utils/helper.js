@@ -8,6 +8,7 @@ const USER_CONTEXT = {
   PHONE_NUMBER: 'phone_number_context',
   OPERATION: 'user_operation_context',
   FUND_CATEGORY: 'fundcategory-followup',
+  PORTFOLIO_SELECTION: 'portfolio_valuation-followup',
 };
 let intervalID = null;
 
@@ -23,15 +24,6 @@ const createPayload = (Payload, agent, richResponse) => {
   return payload;
 };
 
-function cleanupPhoneNumber(agent) {
-  console.log('deleting session');
-  agent.context.delete(USER_CONTEXT.PHONE_NUMBER);
-  agent.context.delete(USER_CONTEXT.OPERATION);
-  agent.context.delete(USER_CONTEXT.FUND_CATEGORY);
-  clearInterval(intervalID);
-  intervalID = null;
-}
-
 // to store valid phone number in context for future communication till 20 lifespans
 function setPhoneNumber(agent, phoneNumber, intervalId) {
   const context = {
@@ -42,11 +34,25 @@ function setPhoneNumber(agent, phoneNumber, intervalId) {
   intervalID = intervalId;
   agent.context.set(context);
 }
+
 function getPhoneNumber(agent) {
-  let data = agent.context.get(USER_CONTEXT.PHONE_NUMBER);
+  let data = getPhoneNumberContext(agent);
   const phoneNumber = data?.parameters.phoneNumber;
   console.log('Phone number object form helper.js', data);
   return phoneNumber || null;
+}
+function getPhoneNumberContext(agent) {
+  let data = agent.context.get(USER_CONTEXT.PHONE_NUMBER);
+  return data;
+}
+function cleanupPhoneNumber(agent) {
+  console.log('deleting session');
+  agent.context.delete(USER_CONTEXT.PHONE_NUMBER);
+  agent.context.delete(USER_CONTEXT.OPERATION);
+  agent.context.delete(USER_CONTEXT.FUND_CATEGORY);
+  agent.context.delete(USER_CONTEXT.PORTFOLIO_SELECTION);
+  clearInterval(intervalID);
+  intervalID = null;
 }
 
 // sharing the value of categroy selected to follow up intent.
@@ -78,6 +84,7 @@ function setUserOperation(agent, userOperation) {
   };
   agent.context.set(context);
 }
+
 function getUserOperation(agent) {
   const userOperation = agent.context.get(USER_CONTEXT.OPERATION)?.parameters
     ?.userOperation;
@@ -87,16 +94,24 @@ function deleteUserOperationContext(agent) {
   agent.context.delete(USER_CONTEXT.OPERATION);
 }
 
+function getPortfolioSelectionContext(agent) {
+  let data = agent.context.get(USER_CONTEXT.PORTFOLIO_SELECTION);
+  return data;
+}
+
 module.exports = {
   USER_OPERATION,
+  USER_CONTEXT,
   createPayload,
   setSelectedCategoryContext,
   getSelectedCategoryContext,
   setPhoneNumber,
   getPhoneNumber,
+  getPhoneNumberContext,
   cleanupPhoneNumber,
   getUserOperation,
   setUserOperation,
   deleteUserOperationContext,
   deleteSelectedCategoryContext,
+  getPortfolioSelectionContext,
 };

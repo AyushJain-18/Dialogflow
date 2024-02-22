@@ -6,7 +6,11 @@ const {
 
 function handleFallbackIntent(agent) {
   console.log('handleFallbackIntent');
-  isInPhoneNumberCollectionProcess(agent);
+  let payload = isInPhoneNumberCollectionProcess(agent);
+  if (payload) {
+    agent.add(payload);
+    return;
+  }
   let message = isInMutualFundSelectionProcess(agent);
   message =
     message ||

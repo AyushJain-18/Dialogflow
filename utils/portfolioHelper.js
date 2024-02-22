@@ -1,5 +1,10 @@
 const { Payload } = require('dialogflow-fulfillment');
-const { createPayload } = require('./helper');
+const {
+  createPayload,
+  getPortfolioSelectionContext,
+  getPhoneNumber,
+} = require('./helper');
+const { GetInvestmentList } = require('../db/dbHandler/getPortfolioValuation');
 
 function generatePortfolioList(agent, portfolio, message) {
   let buttons = {
@@ -20,4 +25,18 @@ function generatePortfolioList(agent, portfolio, message) {
   return payload;
 }
 
-module.exports = { generatePortfolioList };
+function onWrongPortfolioSelection(agent) {
+  let userSelectedNumber = agent.parameters.portfolionumber;
+  let phoneNumber = getPhoneNumber(agent);
+  let contextData = getPortfolioSelectionContext(agent);
+  if (!contextData?.lifespan) return null;
+  let { portfolio } = GetInvestmentList(phoneNumber);
+  let message = userSelectedNumber
+    ? `you dont have any investment under ${userSelectedNumber}\n\n`
+    : '';
+  message += 'Please select from below list\n';
+  message += `${contextData?.lifespan} chances remaing\n`;
+  return generatePortfolioList(agent, portfolio, message);
+}
+
+module.exports = { generatePortfolioList, onWrongPortfolioSelection };
