@@ -6,7 +6,7 @@ function handlePortfolioSelectionIntent(agent) {
   console.log('handlePortfolioSelectionIntent');
   let phoneNumber = getPhoneNumber(agent);
   let message = '';
-  if (phoneNumber) {
+  if (!phoneNumber) {
     message = 'Session ended\nPlease Provide your phone number to login again';
     agent.add(message);
     return;
