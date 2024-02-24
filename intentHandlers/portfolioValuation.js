@@ -1,5 +1,8 @@
 const { Payload } = require('dialogflow-fulfillment');
-const { isPhoneNumberExist } = require('../utils/phoneUtils');
+const {
+  isPhoneNumberExist,
+  isInOtherUserSelectionProcess,
+} = require('../utils/phoneUtils');
 const { callProvideNumFollowUpEvent } = require('../utils/followUpEvents');
 const {
   setUserOperation,
@@ -14,6 +17,14 @@ const { generatePortfolioList } = require('../utils/portfolioHelper');
 
 function handlePortfolioValuationIntent(agent) {
   console.log('handlePortfolioValuationIntent');
+  let payload = isInOtherUserSelectionProcess(
+    agent,
+    USER_OPERATION.PORTFOLIO_VALUATION
+  );
+  if (payload) {
+    agent.add(payload);
+    return;
+  }
   let message = isInMutualFundSelectionProcess(agent);
   if (message) {
     agent.add(message);
@@ -36,7 +47,7 @@ function handlePortfolioValuationIntent(agent) {
   // when user have portofilio under thier account.
   const { name, portfolio, phone_number } = allInvestment;
   message = `Hello ${name}\nBelow is list of your investment linked to account ${phone_number}\n\n`;
-  let payload = generatePortfolioList(agent, portfolio, message);
+  payload = generatePortfolioList(agent, portfolio, message);
   agent.add(payload);
   return;
 }

@@ -1,4 +1,3 @@
-const { Suggestion } = require('dialogflow-fulfillment');
 const {
   onWronDateSelection,
   getStartAndEndDate,
@@ -9,10 +8,22 @@ const {
   isInMutualFundSelectionProcess,
 } = require('../utils/mutualFundSelectionHelper');
 const { setUserOperation, USER_OPERATION } = require('../utils/helper');
-const { isPhoneNumberExist } = require('../utils/phoneUtils');
+const {
+  isPhoneNumberExist,
+  isInOtherUserSelectionProcess,
+} = require('../utils/phoneUtils');
 
 function handleTranscationHistoyIntent(agent) {
   console.log('handleTranscationHistoyIntent', agent.parameters);
+  // if other operation are in process.
+  let payload = isInOtherUserSelectionProcess(
+    agent,
+    USER_OPERATION.TRANSACTION_HISTORY
+  );
+  if (payload) {
+    agent.add(payload);
+    return;
+  }
   // if user currentlt in process of selecting mutual fund.
   let message = isInMutualFundSelectionProcess(agent);
   if (message) {

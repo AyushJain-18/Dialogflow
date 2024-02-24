@@ -7,9 +7,15 @@ const {
   USER_OPERATION,
   deleteSelectedCategoryContext,
 } = require('../utils/helper');
+const { isInOtherUserSelectionProcess } = require('../utils/phoneUtils');
 
 function handleOtherButtonIntent(agent) {
   console.log('handleOtherButtonIntent');
+  let payload = isInOtherUserSelectionProcess(agent);
+  if (payload) {
+    agent.add(payload);
+    return;
+  }
   deleteSelectedCategoryContext(agent);
   let queryText = agent.query;
   queryText = String(queryText).trim().toLocaleLowerCase();

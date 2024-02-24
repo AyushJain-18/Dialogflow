@@ -5,6 +5,7 @@ const {
   getEquityMutualFunds,
 } = require('../db/dbHandler/getFundsDetails');
 const { setSelectedCategoryContext } = require('../utils/helper');
+const { isInOtherUserSelectionProcess } = require('../utils/phoneUtils');
 const {
   isInMutualFundSelectionProcess,
   displayListOfSelectedMutualFunds,
@@ -12,6 +13,11 @@ const {
 
 function handleFundCategorySelection(agent) {
   console.log('handleFundCategorySelection');
+  let payload = isInOtherUserSelectionProcess(agent);
+  if (payload) {
+    agent.add(payload);
+    return;
+  }
   let message = isInMutualFundSelectionProcess(agent);
   if (message) {
     agent.add(message);

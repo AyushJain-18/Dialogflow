@@ -3,10 +3,16 @@ const { createPayload } = require('../utils/helper');
 const {
   isInMutualFundSelectionProcess,
 } = require('../utils/mutualFundSelectionHelper');
+const { isInOtherUserSelectionProcess } = require('../utils/phoneUtils');
 
 // Intent handler for FundExplorerIntent
 function handleFundExplorerIntent(agent) {
   console.log('handleFundExplorerIntent');
+  let payload = isInOtherUserSelectionProcess(agent);
+  if (payload) {
+    agent.add(payload);
+    return;
+  }
   let message = isInMutualFundSelectionProcess(agent);
   if (message) {
     agent.add(message);
@@ -27,7 +33,7 @@ function handleFundExplorerIntent(agent) {
       ],
     ],
   };
-  let payload = createPayload(Payload, agent, {
+  payload = createPayload(Payload, agent, {
     text: text,
     reply_markup: inlineKeyboard,
   });

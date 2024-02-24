@@ -30,7 +30,7 @@ function formatPhoneNumber(phoneNumber) {
   return phoneNumber;
 }
 
-function isInOtherUserSelectionProcess(agent) {
+function isInOtherUserSelectionProcess(agent, crntOperation = '') {
   let data = getUserOperation(agent);
   let phone = isPhoneNumberExist(agent);
   if (!data) return null;
@@ -41,10 +41,10 @@ function isInOtherUserSelectionProcess(agent) {
     return;
   }
 
-  if (data === USER_OPERATION.PORTFOLIO_VALUATION)
+  if (data === USER_OPERATION.PORTFOLIO_VALUATION && data !== crntOperation)
     return onWrongPortfolioSelection(agent);
 
-  if (data === USER_OPERATION.TRANSACTION_HISTORY)
+  if (data === USER_OPERATION.TRANSACTION_HISTORY && data !== crntOperation)
     return onWronDateSelection(agent);
 }
 
