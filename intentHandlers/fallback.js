@@ -1,4 +1,4 @@
-const { isInPhoneNumberCollectionProcess } = require('../utils/phoneUtils');
+const { isInOtherUserSelectionProcess } = require('../utils/phoneUtils');
 
 const {
   isInMutualFundSelectionProcess,
@@ -6,7 +6,7 @@ const {
 
 function handleFallbackIntent(agent) {
   console.log('handleFallbackIntent');
-  let payload = isInPhoneNumberCollectionProcess(agent);
+  let payload = isInOtherUserSelectionProcess(agent);
   if (payload) {
     agent.add(payload);
     return;

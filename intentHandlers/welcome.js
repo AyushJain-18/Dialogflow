@@ -3,14 +3,14 @@ const {
   createPayload,
   deleteSelectedCategoryContext,
 } = require('../utils/helper');
-const { isInPhoneNumberCollectionProcess } = require('../utils/phoneUtils');
+const { isInOtherUserSelectionProcess } = require('../utils/phoneUtils');
 const {
   isInMutualFundSelectionProcess,
 } = require('../utils/mutualFundSelectionHelper');
 
 function handleWelcomeIntent(agent) {
   console.log('handleWelcomeIntent');
-  isInPhoneNumberCollectionProcess(agent);
+  isInOtherUserSelectionProcess(agent);
   let text = isInMutualFundSelectionProcess(agent);
   if (text) {
     agent.add(text);

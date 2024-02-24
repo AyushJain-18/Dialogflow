@@ -29,7 +29,7 @@ function formatPhoneNumber(phoneNumber) {
   return phoneNumber;
 }
 
-function isInPhoneNumberCollectionProcess(agent) {
+function isInOtherUserSelectionProcess(agent) {
   let data = getUserOperation(agent);
   let phone = isPhoneNumberExist(agent);
   if (!data) return null;
@@ -42,14 +42,11 @@ function isInPhoneNumberCollectionProcess(agent) {
 
   if (data === USER_OPERATION.PORTFOLIO_VALUATION)
     return onWrongPortfolioSelection(agent);
-  if (data === USER_OPERATION.TRANSACTION_HISTORY) {
-    // todo
-  }
 }
 
 module.exports = {
   isPhoneNumberExist,
   validatePhoneNumber,
   formatPhoneNumber,
-  isInPhoneNumberCollectionProcess,
+  isInOtherUserSelectionProcess,
 };
