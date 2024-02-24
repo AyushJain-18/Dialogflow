@@ -11,6 +11,7 @@ const handlePhoneNumberIntent = require('./intentHandlers/phoneNumber');
 const handleLogoutIntent = require('./intentHandlers/logoutIntent');
 const handleOtherButtonIntent = require('./intentHandlers/otherButtunIntent');
 const handlePortfolioSelectionIntent = require('./intentHandlers/portfolioSelection');
+const handleTranscationHistoyIntent = require('./intentHandlers/transactionHistory');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -33,7 +34,7 @@ app.post('/dialogflow', (req, res) => {
   // intent for operation type
   intentMap.set('PORTFOLIO_VALUATION', handlePortfolioValuationIntent);
   intentMap.set('FUND_EXPLORER', handleFundExplorerIntent);
-  intentMap.set('TRANSACTION_HISTORY', handleFundExplorerIntent);
+  intentMap.set('TRANSACTION_HISTORY', handleTranscationHistoyIntent);
   intentMap.set('OTHER_BUTTON_INTENT', handleOtherButtonIntent);
 
   // Fund category and selection
