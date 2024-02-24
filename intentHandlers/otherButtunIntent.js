@@ -16,7 +16,6 @@ function handleOtherButtonIntent(agent) {
     agent.add(payload);
     return;
   }
-  deleteSelectedCategoryContext(agent);
   let queryText = agent.query;
   queryText = String(queryText).trim().toLocaleLowerCase();
 
@@ -26,6 +25,7 @@ function handleOtherButtonIntent(agent) {
   }
 
   if (queryText === 'main menu') {
+    deleteSelectedCategoryContext(agent);
     callWelcomeFollowUpEvent(agent);
   }
   agent.add('respose');

@@ -2,6 +2,9 @@ const callWelcomeFollowUpEvent = (agent) => {
   agent.setFollowupEvent('WELCOME_INTENT');
 };
 
+const callFundExplorerFollowUpEvent = (agent) => {
+  agent.setFollowupEvent('FUND_EXPLORE_EVENT');
+};
 const callProvideNumFollowUpEvent = (agent) => {
   agent.setFollowupEvent('PROVIDE_PHONE_NUMBER');
 };
@@ -24,4 +27,5 @@ module.exports = {
   callProfileValuationFollowUpEvent,
   callPortfolioSelectionFollowUpEvent,
   callTransationHistryFollowUpEvent,
+  callFundExplorerFollowUpEvent,
 };

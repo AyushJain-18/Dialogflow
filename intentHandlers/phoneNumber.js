@@ -11,6 +11,7 @@ const {
   setUserOperation,
   USER_OPERATION,
   createPayload,
+  deleteSelectedCategoryContext,
 } = require('../utils/helper');
 
 const {
@@ -19,6 +20,7 @@ const {
 } = require('../utils/phoneUtils');
 const {
   isInMutualFundSelectionProcess,
+  isMutualFundSelectedForInvestment,
 } = require('../utils/mutualFundSelectionHelper');
 
 function redirectUser(agent, phoneNumber) {
@@ -37,8 +39,12 @@ function redirectUser(agent, phoneNumber) {
     return;
   }
   if (userOperation === USER_OPERATION.INVEST) {
-    let message = 'Thank you for investing';
-    agent.add(message);
+    let isInvested = isMutualFundSelectedForInvestment(agent);
+    if (isInvested) {
+      deleteSelectedCategoryContext(agent);
+      let message = 'Thank you for investing';
+      agent.add(message);
+    }
     return;
   }
   // when user provide phone number wihthout selecting any operation

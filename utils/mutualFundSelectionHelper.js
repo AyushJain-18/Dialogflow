@@ -1,6 +1,7 @@
 const { Payload } = require('dialogflow-fulfillment');
 const { getMFDetails } = require('../db/dbHandler/getFundsDetails');
 const { getSelectedCategoryContext, createPayload } = require('./helper');
+const { callFundExplorerFollowUpEvent } = require('./followUpEvents');
 
 function onWrongMutualFundSelection(lifespan, totalEquityMF) {
   let wrongInputMsg = `Wrong Input selected please enter 1 to ${totalEquityMF} to proced further.\n`;
@@ -67,9 +68,25 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function isMutualFundSelectedForInvestment(agent) {
+  let message = isInMutualFundSelectionProcess(agent);
+  if (message) {
+    agent.add(message);
+    return;
+  }
+  const { lifespan, totalFunds, category } = getSelectedCategoryContext(agent);
+  if (!category) {
+    callFundExplorerFollowUpEvent(agent);
+    agent.add('FUND_EXPLORER');
+    return;
+  }
+  return true;
+}
+
 module.exports = {
   isInMutualFundSelectionProcess,
   onWrongMutualFundSelection,
   displayListOfSelectedMutualFunds,
   displaySeletedMutualFundDetails,
+  isMutualFundSelectedForInvestment,
 };
