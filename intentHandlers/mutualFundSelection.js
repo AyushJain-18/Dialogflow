@@ -6,7 +6,10 @@ const {
   getHybridMutualFunds,
   getSOFMutualFunds,
 } = require('../db/dbHandler/getFundsDetails');
-const { getSelectedCategoryContext } = require('../utils/helper');
+const {
+  getSelectedCategoryContext,
+  deleteSelectedCategoryContext,
+} = require('../utils/helper');
 
 const { callWelcomeFollowUpEvent } = require('../utils/followUpEvents');
 const {
@@ -18,8 +21,9 @@ function handleMutualFundSelection(agent) {
   console.log('handleMutualFundSelection');
   let userSelectedNumber = getSelectedMutualFundNumber(agent);
   // main menu seleciton
-  if (userSelectedNumber === 0) {
+  if (userSelectedNumber == 0) {
     agent.add('Redirecting to welcome intent');
+    deleteSelectedCategoryContext(agent);
     callWelcomeFollowUpEvent(agent);
   }
   let { selectedCategory, lifespan } = getSelectedMutualFundCategory(agent);

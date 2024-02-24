@@ -1,8 +1,5 @@
 const { Payload } = require('dialogflow-fulfillment');
-const {
-  createPayload,
-  deleteSelectedCategoryContext,
-} = require('../utils/helper');
+const { createPayload } = require('../utils/helper');
 const { isInOtherUserSelectionProcess } = require('../utils/phoneUtils');
 const {
   isInMutualFundSelectionProcess,
@@ -16,7 +13,6 @@ function handleWelcomeIntent(agent) {
     agent.add(text);
     return;
   }
-  deleteSelectedCategoryContext(agent);
   text =
     'Welcome to ABC Mutual Fund Service. Please select any one option to begin with';
   const buttons = {
