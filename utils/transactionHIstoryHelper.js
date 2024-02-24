@@ -54,7 +54,7 @@ function getDateFromUserQuery(agent, userText) {
       console.log('match is', match);
       let data = convertTextToDate(match);
       result[`${index}`] = data;
-      result['isError'] = false;
+      result['isValid'] = false;
     });
     console.log('result', result);
     return result;
@@ -69,7 +69,7 @@ function getStartAndEndDate(date1, date2) {
   let endDate = date1 < date2 ? date2 : date1;
   let { startYear } = getFinancialYear(startDate);
   let { endYear } = getFinancialYear(endDate);
-  return { startDate, endDate, startYear, endYear, isError: false };
+  return { startDate, endDate, startYear, endYear, isValid: false };
 }
 function onWronDateSelection(agent) {
   let message =
@@ -100,8 +100,7 @@ function onWronDateSelection(agent) {
     text: message,
     reply_markup: suggestionChips,
   });
-  agent.add(payload);
-  return { isError: true };
+  return payload;
 }
 
 module.exports = {

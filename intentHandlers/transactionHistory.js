@@ -3,7 +3,7 @@ const {
   onWronDateSelection,
   getStartAndEndDate,
   getDateFromUserQuery,
-} = require('../utils/transactionHIstoryHelper');
+} = require('../utils/transactionHistoryHelper');
 
 const {
   isInMutualFundSelectionProcess,
@@ -53,7 +53,9 @@ function handleTranscationHistoyIntent(agent) {
       userDate = onWronDateSelection(agent);
       break;
   }
-  if (userDate.isError) {
+  if (!userDate.isValid) {
+    // not a valid date, hence sending worng date selection payload back to user.
+    agent.add(userDate);
     return;
   }
   //  agent.add(new Suggestion({ title: 'Hello ' }));

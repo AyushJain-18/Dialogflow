@@ -6,6 +6,7 @@ const {
   USER_CONTEXT,
 } = require('./helper');
 const { onWrongPortfolioSelection } = require('./portfolioHelper');
+const { onWronDateSelection } = require('./transactionHistoryHelper');
 
 const isPhoneNumberExist = (agent) => {
   const phoneNumber = getPhoneNumber(agent);
@@ -42,6 +43,9 @@ function isInOtherUserSelectionProcess(agent) {
 
   if (data === USER_OPERATION.PORTFOLIO_VALUATION)
     return onWrongPortfolioSelection(agent);
+
+  if (data === USER_OPERATION.TRANSACTION_HISTORY)
+    return onWronDateSelection(agent);
 }
 
 module.exports = {
