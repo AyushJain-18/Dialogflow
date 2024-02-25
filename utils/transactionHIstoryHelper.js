@@ -29,6 +29,7 @@ function convertTextToDate(text) {
   let dateRegex =
     /((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4})\b/i;
   let yearRegex = /\b\d{4}\b/i;
+  let regex = /^\d{2}[\/-]\d{2}[\/-]\d{4}$/g;
   if (currentYearRegex.test(text)) {
     return getFinancialYear(new Date());
   }
@@ -43,16 +44,25 @@ function convertTextToDate(text) {
     const matches = text.match(yearRegex);
     return getFinancialYear(new Date(matches[0]));
   }
+  if (regex.test(text)) {
+    const matches = text.match(regex);
+    return getFinancialYear(new Date(matches[0]));
+  }
 }
 
 function getDateFromUserQuery(agent, userText) {
+  const dateRegex = /(\d{2}[\/-]\d{2}[\/-]\d{4})\b/g;
   const regex =
-    /\b((?:current|this|next|previous|last|ongoing) (?:financial )(?:year|month))|((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b)\b/gi;
-  const matches = userText.match(regex);
+    /\b(?:current|this|next|previous|last|ongoing) (?:financial )(?:year|month)\b|(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b/gi;
+  const combinedRegex = new RegExp(
+    `(${dateRegex.source})|(${regex.source})`,
+    'gi'
+  );
+
+  const matches = userText.match(combinedRegex);
   let result = {};
   if (matches?.length > 0) {
     matches.forEach((match, index) => {
-      console.log('match is', match);
       let data = convertTextToDate(match);
       result[`${index}`] = data;
     });

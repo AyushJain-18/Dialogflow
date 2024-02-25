@@ -12,6 +12,7 @@ const {
   USER_OPERATION,
   createPayload,
   deleteSelectedCategoryContext,
+  setUserDate,
 } = require('../utils/helper');
 
 const {
@@ -87,11 +88,23 @@ function handlePhoneNumberIntent(agent) {
     return;
   }
   let data = getUserOperation(agent);
+  let savedPhoneNumber = getPhoneNumber(agent);
+
+  if (validatePhoneNumber(savedPhoneNumber)) {
+    if (data === USER_OPERATION.TRANSACTION_HISTORY) {
+      setUserDate(agent, { date: null, userText: agent.query });
+      callTransationHistryFollowUpEvent(agent);
+    }
+    if (data === USER_OPERATION.PORTFOLIO_VALUATION) {
+      callProfileValuationFollowUpEvent(agent);
+    }
+  }
   // console.log('data', agent.context.get('user_operation_context'));
+
   if (!data) {
     setUserOperation(agent, USER_OPERATION.PHONE_NUMBER_GENERATION);
   }
-  let phoneNumber = agent.parameters['phone-number'] || getPhoneNumber(agent);
+  let phoneNumber = agent.parameters['phone-number'] || savedPhoneNumber;
   // phone numebr not present or invalid phone number
   if (!phoneNumber || !validatePhoneNumber(phoneNumber)) {
     let returnMsg = phoneNumber
