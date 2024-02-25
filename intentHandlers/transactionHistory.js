@@ -62,7 +62,7 @@ function handleTranscationHistoyIntent(agent) {
   if (!userPhoneNumber) {
     // if phone number is not present.
     let userDate = { date: date, userText: userText };
-    console.log('User data to be set', userData);
+    // console.log('User data to be set', userData);
     setUserDate(agent, userDate);
     callProvideNumFollowUpEvent(agent);
     agent.add('Please provie phone number to proceed further');
@@ -100,7 +100,7 @@ function handleTranscationHistoyIntent(agent) {
     return;
   }
   //  agent.add(new Suggestion({ title: 'Hello ' }));
-  console.log('formated user date is', formatedDate);
+  // console.log('formated user date is', formatedDate);
   setUserDate(agent, formatedDate);
   let allTxn = getTxnHistory(userPhoneNumber, formatedDate);
   if (allTxn.length === 0) {

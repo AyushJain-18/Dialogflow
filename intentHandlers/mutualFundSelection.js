@@ -73,7 +73,7 @@ function handleMutualFundSelection(agent) {
 
 function getSelectedMutualFundCategory(agent) {
   const selectedMutualFundCategory = getSelectedCategoryContext(agent);
-  console.log('selectedMutualFundCategory', selectedMutualFundCategory);
+  // console.log('selectedMutualFundCategory', selectedMutualFundCategory);
   let value = selectedMutualFundCategory?.category || null;
   let selectedCategory = getCategory(value);
   let lifespan = selectedMutualFundCategory.lifespan;
