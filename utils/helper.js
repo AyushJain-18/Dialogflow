@@ -10,6 +10,7 @@ const USER_CONTEXT = {
   FUND_CATEGORY: 'fundcategory-followup',
   PORTFOLIO_SELECTION: 'portfolio_valuation-followup',
   USER_TRXN_DATE: 'user_trxn_date',
+  SELECTED_FUND: 'user_selected_mutual_fund',
 };
 let intervalID = null;
 
@@ -53,6 +54,7 @@ function cleanupPhoneNumber(agent) {
   agent.context.delete(USER_CONTEXT.FUND_CATEGORY);
   agent.context.delete(USER_CONTEXT.PORTFOLIO_SELECTION);
   agent.context.delete(USER_CONTEXT.USER_TRXN_DATE);
+  agent.context.delete(USER_CONTEXT.SELECTED_FUND);
   clearInterval(intervalID);
   intervalID = null;
 }
@@ -119,6 +121,24 @@ function getUserDate(agent) {
 function deleteUserDate(agent) {
   agent.context.delete(USER_CONTEXT.USER_TRXN_DATE);
 }
+
+function setSelectedMFContext(agent, fundNo) {
+  const context = {
+    name: USER_CONTEXT.SELECTED_FUND,
+    lifespan: 5,
+    parameters: { fundNo },
+  };
+  agent.context.set(context);
+}
+
+function getSelectedMFContext(agent) {
+  const fundNo = agent.context.get(USER_CONTEXT.SELECTED_FUND)?.parameters
+    ?.fundNo;
+  return fundNo || null;
+}
+function deleteSelectedMFContext(agent) {
+  agent.context.delete(USER_CONTEXT.SELECTED_FUND);
+}
 module.exports = {
   USER_OPERATION,
   USER_CONTEXT,
@@ -137,4 +157,7 @@ module.exports = {
   getUserDate,
   setUserDate,
   deleteUserDate,
+  setSelectedMFContext,
+  getSelectedMFContext,
+  deleteSelectedMFContext,
 };

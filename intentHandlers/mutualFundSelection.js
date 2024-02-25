@@ -9,6 +9,7 @@ const {
 const {
   getSelectedCategoryContext,
   deleteSelectedCategoryContext,
+  setSelectedMFContext,
 } = require('../utils/helper');
 
 const { callWelcomeFollowUpEvent } = require('../utils/followUpEvents');
@@ -55,6 +56,8 @@ function handleMutualFundSelection(agent) {
       selectedCategory,
       lifespan
     );
+    deleteSelectedCategoryContext(agent);
+    setSelectedMFContext(agent, userSelectedNumber);
     agent.add(payload);
     return;
   }
