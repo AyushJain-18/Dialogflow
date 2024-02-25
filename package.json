@@ -4,7 +4,12 @@
   "description": "A mutual fund chartbot",
   "main": "server.js",
   "scripts": {
-    "tunnel": "ngrok http 8080"
+    "tunnel": "ngrok http 8080",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "20.7.0",
+    "npm": "10.1.0"
   },
   "dependencies": {
     "actions-on-google": "^2.2.0",
