@@ -248,6 +248,12 @@
                     "fund_name": "Large cap funds"
                 },
                 {
+                    "investment_date": "2024-01-15",
+                    "investment_amount": 400000,
+                    "investment_year": 2024,
+                    "fund_name": "Balanced Hybrid"
+                },
+                {
                     "investment_date": "2023-11-15",
                     "investment_amount": 100000,
                     "investment_year": 2023,
