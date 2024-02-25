@@ -9,6 +9,7 @@ const USER_CONTEXT = {
   OPERATION: 'user_operation_context',
   FUND_CATEGORY: 'fundcategory-followup',
   PORTFOLIO_SELECTION: 'portfolio_valuation-followup',
+  USER_TRXN_DATE: 'user_trxn_date',
 };
 let intervalID = null;
 
@@ -38,7 +39,7 @@ function setPhoneNumber(agent, phoneNumber, intervalId) {
 function getPhoneNumber(agent) {
   let data = getPhoneNumberContext(agent);
   const phoneNumber = data?.parameters.phoneNumber;
-  console.log('Phone number object form helper.js', data);
+  // console.log('Phone number object form helper.js', data);
   return phoneNumber || null;
 }
 function getPhoneNumberContext(agent) {
@@ -51,6 +52,7 @@ function cleanupPhoneNumber(agent) {
   agent.context.delete(USER_CONTEXT.OPERATION);
   agent.context.delete(USER_CONTEXT.FUND_CATEGORY);
   agent.context.delete(USER_CONTEXT.PORTFOLIO_SELECTION);
+  agent.context.delete(USER_CONTEXT.USER_TRXN_DATE);
   clearInterval(intervalID);
   intervalID = null;
 }
@@ -94,11 +96,29 @@ function deleteUserOperationContext(agent) {
   agent.context.delete(USER_CONTEXT.OPERATION);
 }
 
+// this follow up content, when user click on valuation it been setup in dialogflow
 function getPortfolioSelectionContext(agent) {
   let data = agent.context.get(USER_CONTEXT.PORTFOLIO_SELECTION);
   return data;
 }
 
+// to determine user enter date for transaction history
+function setUserDate(agent, userDate) {
+  const context = {
+    name: USER_CONTEXT.USER_TRXN_DATE,
+    lifespan: 5,
+    parameters: { userDate },
+  };
+  agent.context.set(context);
+}
+
+function getUserDate(agent) {
+  const userDate = agent.context.get(USER_CONTEXT.USER_TRXN_DATE);
+  return userDate || null;
+}
+function deleteUserDate(agent) {
+  agent.context.delete(USER_CONTEXT.USER_TRXN_DATE);
+}
 module.exports = {
   USER_OPERATION,
   USER_CONTEXT,
@@ -114,4 +134,7 @@ module.exports = {
   deleteUserOperationContext,
   deleteSelectedCategoryContext,
   getPortfolioSelectionContext,
+  getUserDate,
+  setUserDate,
+  deleteUserDate,
 };
